@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import TodoItem from './TodoItem'
 
+
 class App extends Component {
 
     constructor(props) {
@@ -19,11 +20,9 @@ class App extends Component {
             <div>
                 <div>
                     <input value={this.state.inputValue} onChange={this.handleInputChange}/>
-                    <button onClick={this.handleBthClick}>add</button>
+                    <button  className='btn-red' onClick={this.handleBthClick}>add</button>
                 </div>
-                < ul>
-                    {this.getTodoListItem()}
-                </ul>
+                < ul>{this.getTodoListItem()}</ul>
             </div>
         );
     }
