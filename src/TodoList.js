@@ -9,22 +9,20 @@ class App extends Component {
             list: [],
             inputValue: ''
         }
+        this.handleInputChange = this.handleInputChange.bind(this)
+        this.handleBthClick = this.handleBthClick.bind(this)
+        this.handleDelItemForChild = this.handleDelItemForChild.bind(this)
     }
 
     render() {
         return (
             <div>
                 <div>
-                    <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)}/>
-                    <button onClick={this.handleBthClick.bind(this)}>add</button>
+                    <input value={this.state.inputValue} onChange={this.handleInputChange}/>
+                    <button onClick={this.handleBthClick}>add</button>
                 </div>
                 < ul>
-                    {
-                        this.state.list.map((item, index) => {
-                            return <TodoItem key={index} contentStr={item} index={index} delItem = {this.handleDelItemForChild.bind(this)}/>
-                            // return <li key={index} onClick={this.handleItemClick.bind(this, index)}>{item}</li>
-                        })
-                    }
+                    {this.getTodoListItem()}
                 </ul>
             </div>
         );
@@ -60,9 +58,24 @@ class App extends Component {
      * 删除指定索引的item（提供给子组件使用）
      * @param index
      */
-    handleDelItemForChild(index){
+    handleDelItemForChild(index) {
         // console.log(index)
         this.handleItemClick(index)
+    }
+
+    getTodoListItem() {
+        return (
+            this.state.list.map((item, index) => {
+                return (
+                    <TodoItem
+                        key={index}
+                        contentStr={item}
+                        index={index}
+                        delItem={this.handleDelItemForChild}
+                    />
+                )
+                // return <li key={index} onClick={this.handleItemClick.bind(this, index)}>{item}</li>
+            }))
     }
 }
 
