@@ -21,7 +21,7 @@ class App extends Component {
                 < ul>
                     {
                         this.state.list.map((item, index) => {
-                            return <TodoItem key={index} contentStr={item}/>
+                            return <TodoItem key={index} contentStr={item} index={index} delItem = {this.handleDelItemForChild.bind(this)}/>
                             // return <li key={index} onClick={this.handleItemClick.bind(this, index)}>{item}</li>
                         })
                     }
@@ -54,6 +54,15 @@ class App extends Component {
         this.setState({
             list: list
         })
+    }
+
+    /**
+     * 删除指定索引的item（提供给子组件使用）
+     * @param index
+     */
+    handleDelItemForChild(index){
+        // console.log(index)
+        this.handleItemClick(index)
     }
 }
 
