@@ -1,0 +1,20 @@
+
+/*标签选择器前面啥都不用加*/
+div {
+    background-color: red;
+}
+
+
+/*id选择器前面用#号 id选择器具有唯一性*/
+#div {
+    background-color: aqua;
+}
+
+/*class选择器前面用点  class可以多重引用，中间用空格隔开即可*/
+.div1 {
+    background-color: #ff3180;
+}
+
+.div2 {
+   font-size: 40px;
+}
